@@ -1,4 +1,4 @@
-# nachrichtenleicht
+# nachrichtenleicht [![Build Status](https://travis-ci.com/Frederick-S/nachrichtenleicht-mobile.svg?branch=main)](https://travis-ci.com/Frederick-S/nachrichtenleicht-mobile)
 
 A new Flutter application.
 
