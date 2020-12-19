@@ -1,10 +1,47 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 
-void main() {
-  runApp(MyApp());
+import 'package:flutter/material.dart';
+import 'package:global_configuration/global_configuration.dart';
+
+import 'error_reporter.dart';
+
+main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await GlobalConfiguration().loadFromAsset('config');
+
+  runZoned<Future<void>>(() async {
+    runApp(Nachrichtenleicht());
+  }, onError: (error, stackTrace) {
+    _reportError(error, stackTrace);
+  });
+
+  FlutterError.onError = (details, {bool forceReport = false}) {
+    if (isInDebugMode) {
+      FlutterError.dumpErrorToConsole(details);
+    } else {
+      Zone.current.handleUncaughtError(details.exception, details.stack);
+    }
+  };
 }
 
-class MyApp extends StatelessWidget {
+Future<void> _reportError(dynamic error, dynamic stackTrace) async {
+  if (isInDebugMode) {
+    print(stackTrace);
+  } else {
+    ErrorReporter.reportError(error, stackTrace);
+  }
+}
+
+bool get isInDebugMode {
+  bool inDebugMode = false;
+
+  assert(inDebugMode = true);
+
+  return inDebugMode;
+}
+
+class Nachrichtenleicht extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
