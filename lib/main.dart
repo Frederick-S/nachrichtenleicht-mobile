@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
-import 'package:nachrichtenleicht/news_type.dart';
 import 'package:nachrichtenleicht/widget/NewsList.dart';
 
 import 'error_reporter.dart';
+import 'news_type.dart';
 
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
