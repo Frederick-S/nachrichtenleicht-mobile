@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
-import 'package:nachrichtenleicht/widget/NewsList.dart';
+import 'package:nachrichtenleicht/widget/news_list.dart';
 
 import 'error_reporter.dart';
 import 'news_type.dart';
