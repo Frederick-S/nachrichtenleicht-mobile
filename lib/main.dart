@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
+import 'package:nachrichtenleicht/news_type.dart';
+import 'package:nachrichtenleicht/widget/NewsList.dart';
 
 import 'error_reporter.dart';
 
@@ -73,10 +75,10 @@ class Nachrichtenleicht extends StatelessWidget {
           ),
           body: TabBarView(
             children: [
-              Icon(Icons.directions_car),
-              Icon(Icons.directions_transit),
-              Icon(Icons.directions_bike),
-              Icon(Icons.directions_bike),
+              NewsList(NewsType.Nachrichten),
+              NewsList(NewsType.Kultur),
+              NewsList(NewsType.Vermischtes),
+              NewsList(NewsType.Sport),
             ],
           ),
         ),
