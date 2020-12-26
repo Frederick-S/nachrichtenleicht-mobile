@@ -8,6 +8,7 @@ import 'package:nachrichtenleicht/service/config_service.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../error_reporter.dart';
+import 'news_detail.dart';
 
 class NewsList extends StatefulWidget {
   final int newsType;
@@ -62,7 +63,11 @@ class NewsListState extends State<NewsList> {
       leading: CircleAvatar(
         backgroundImage: CachedNetworkImageProvider(news.imageUrl),
       ),
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) {
+          return NewsDetail(news);
+        }));
+      },
     );
   }
 
