@@ -21,7 +21,8 @@ class NewsList extends StatefulWidget {
   }
 }
 
-class NewsListState extends State<NewsList> {
+class NewsListState extends State<NewsList>
+    with AutomaticKeepAliveClientMixin<NewsList> {
   int _newsType;
   final _configService = ConfigService();
   final _cachedNewsService = CachedNewsService();
@@ -37,6 +38,8 @@ class NewsListState extends State<NewsList> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     return Scaffold(
       body: SmartRefresher(
         enablePullDown: true,
@@ -142,4 +145,7 @@ class NewsListState extends State<NewsList> {
       _refreshController.loadFailed();
     });
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
