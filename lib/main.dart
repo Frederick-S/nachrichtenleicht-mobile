@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
 import 'package:nachrichtenleicht/widget/news_list.dart';
+import 'package:nachrichtenleicht/widget/settings.dart';
 
 import 'error_reporter.dart';
 import 'news_type.dart';
@@ -51,10 +52,27 @@ class Nachrichtenleicht extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: DefaultTabController(
-        length: 4,
-        child: Scaffold(
-          appBar: AppBar(
+      home: NewsTab(),
+    );
+  }
+}
+
+class NewsTab extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: 4,
+      child: Scaffold(
+        appBar: AppBar(
+            title: Text('Nachrichtenleicht'),
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(Icons.settings),
+                onPressed: () {
+                  _openSettings(context);
+                },
+              )
+            ],
             bottom: TabBar(
               tabs: [
                 Tab(
@@ -70,19 +88,23 @@ class Nachrichtenleicht extends StatelessWidget {
                   text: "Sport",
                 ),
               ],
-            ),
-            title: Text('Nachrichtenleicht'),
-          ),
-          body: TabBarView(
-            children: [
-              NewsList(NewsType.Nachrichten),
-              NewsList(NewsType.Kultur),
-              NewsList(NewsType.Vermischtes),
-              NewsList(NewsType.Sport),
-            ],
-          ),
+            )),
+        body: TabBarView(
+          children: [
+            NewsList(NewsType.Nachrichten),
+            NewsList(NewsType.Kultur),
+            NewsList(NewsType.Vermischtes),
+            NewsList(NewsType.Sport),
+          ],
         ),
       ),
     );
+  }
+
+  void _openSettings(BuildContext context) {
+    Navigator.of(context)
+        .push(MaterialPageRoute<void>(builder: (BuildContext context) {
+      return Settings();
+    }));
   }
 }
