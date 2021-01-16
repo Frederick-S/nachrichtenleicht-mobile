@@ -80,7 +80,7 @@ class Settings extends StatelessWidget {
   }
 
   void _openPrivacyPolicy(BuildContext context) async {
-    final url = 'https://github.com/Frederick-S/nhk-easy-mobile-privacy-policy';
+    final url = 'https://github.com/Frederick-S/nachrichtenleicht-mobile-privacy-policy';
 
     if (await canLaunch(url)) {
       await launch(url);
