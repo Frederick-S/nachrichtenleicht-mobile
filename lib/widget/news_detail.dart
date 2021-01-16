@@ -96,12 +96,19 @@ class NewsDetailState extends State<NewsDetail> {
             * {
               font-size: 16px;
             }
+            h1 {
+              font-size: 20px;
+            }
             img {
               max-width: 100%;
             }
+            .description {
+              font-weight: bold;
+            }
           </style>
-          $image
           <h1>${news.title}</h1>
+          <p class="description">${news.description}</p>
+          $image
           ${news.body}
         </body>
       </html>
