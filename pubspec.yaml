@@ -34,7 +34,7 @@ dependencies:
   sembast: ^2.4.7+7
   path: ^1.6.4
   path_provider: ^1.6.18
-  pull_to_refresh: ^1.6.3
+  pull_to_refresh: ^2.0.0
   fluttertoast: ^7.1.6
   cached_network_image: ^2.4.1
   just_audio: ^0.2.2
